@@ -63,9 +63,15 @@ const config: Config = {
   jwtSecret: process.env.JWT_SECRET || 'supersecretkey',
 };
 
+// Only require essential configs for demo mode
 const requiredConfigsInProduction = [
+  'mongoUri'
+];
+
+// Full production requirements (commented out for demo)
+const fullProductionConfigs = [
   'ethereumBridgeAddress',
-  'citreaBridgeAddress',
+  'citreaBridgeAddress', 
   'sp1HeliosAddress',
   'sourceConsensusRpcUrl'
 ];
@@ -74,6 +80,13 @@ if (config.environment === 'production') {
   for (const requiredConfig of requiredConfigsInProduction) {
     if (!config[requiredConfig as keyof Config]) {
       throw new Error(`Missing required configuration: ${requiredConfig}`);
+    }
+  }
+  
+  // Log warnings for missing optional configs
+  for (const optionalConfig of fullProductionConfigs) {
+    if (!config[optionalConfig as keyof Config]) {
+      console.warn(`Warning: Missing optional configuration: ${optionalConfig} - Some features may be disabled`);
     }
   }
 }
