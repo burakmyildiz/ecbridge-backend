@@ -95,7 +95,7 @@ export class ProofGenerator {
       logger.info(`SP1-Helios operator: ${data.toString().trim()}`);
     });
     
-    this.sp1HeliosOperatorProcess.on('error', (error) => {
+    this.sp1HeliosOperatorProcess.on('error', (error: any) => {
       if (error.code === 'ENOENT') {
         logger.error('Cargo not found - SP1-Helios operator requires Rust installation');
         logger.info('SP1-Helios operator will not run in this environment');
