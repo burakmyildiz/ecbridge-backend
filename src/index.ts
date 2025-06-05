@@ -152,9 +152,12 @@ const startServer = async () => {
     await relayerService.start();  // Monitoring and transaction tracking
     
     // Start the ETH to Citrea relayer (handles actual bridging)
-    //startEthToCitreaRelayer().catch(console.error);
-    //startDemoEthToCitreaRelayer().catch(console.error);
-    startDemoRealRelayer().catch(console.error);
+    // Disabled for demo deployment - requires deployed contracts
+    // startEthToCitreaRelayer().catch(console.error);
+    // startDemoEthToCitreaRelayer().catch(console.error);
+    // startDemoRealRelayer().catch(console.error);
+    
+    logger.info('Demo mode: Bridge relayer disabled (no contracts deployed)');
     
     // Start the notification worker for email notifications
     startNotificationWorker().catch(console.error);
