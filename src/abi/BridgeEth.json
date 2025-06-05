@@ -1,0 +1,57 @@
+[
+  {
+    "inputs": [{ "internalType": "address", "name": "to", "type": "address" }],
+    "name": "depositETH",
+    "outputs": [{ "internalType": "uint256", "name": "nonce", "type": "uint256" }],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "token", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "address", "name": "to", "type": "address" }
+    ],
+    "name": "depositERC20",
+    "outputs": [{ "internalType": "uint256", "name": "nonce", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentNonce",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "deposits",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "address", "name": "from",   "type": "address" },
+      { "indexed": true,  "internalType": "address", "name": "to",     "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "nonce",  "type": "uint256" }
+    ],
+    "name": "DepositETH",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "address", "name": "token",  "type": "address" },
+      { "indexed": true,  "internalType": "address", "name": "from",   "type": "address" },
+      { "indexed": true,  "internalType": "address", "name": "to",     "type": "address" },
+      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "indexed": false, "internalType": "uint256", "name": "nonce",  "type": "uint256" }
+    ],
+    "name": "DepositERC20",
+    "type": "event"
+  }
+]

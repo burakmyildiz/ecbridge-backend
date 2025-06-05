@@ -1,0 +1,175 @@
+[
+    {
+      "inputs": [
+        {
+          "components": [
+            { "internalType": "bytes32", "name": "executionStateRoot", "type": "bytes32" },
+            { "internalType": "uint256", "name": "genesisTime", "type": "uint256" },
+            { "internalType": "bytes32", "name": "genesisValidatorsRoot", "type": "bytes32" },
+            { "internalType": "address", "name": "guardian", "type": "address" },
+            { "internalType": "uint256", "name": "head", "type": "uint256" },
+            { "internalType": "bytes32", "name": "header", "type": "bytes32" },
+            { "internalType": "bytes32", "name": "heliosProgramVkey", "type": "bytes32" },
+            { "internalType": "uint256", "name": "secondsPerSlot", "type": "uint256" },
+            { "internalType": "uint256", "name": "slotsPerEpoch", "type": "uint256" },
+            { "internalType": "uint256", "name": "slotsPerPeriod", "type": "uint256" },
+            { "internalType": "uint256", "name": "sourceChainId", "type": "uint256" },
+            { "internalType": "bytes32", "name": "syncCommitteeHash", "type": "bytes32" },
+            { "internalType": "address", "name": "verifier", "type": "address" }
+          ],
+          "internalType": "struct SP1Helios.InitParams",
+          "name": "params",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "GENESIS_VALIDATORS_ROOT",
+      "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "GENESIS_TIME",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SECONDS_PER_SLOT",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SLOTS_PER_EPOCH",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SLOTS_PER_PERIOD",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SOURCE_CHAIN_ID",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "head",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "headers",
+      "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "executionStateRoots",
+      "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "syncCommittees",
+      "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "heliosProgramVkey",
+      "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "verifier",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "guardian",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "bytes", "name": "proof", "type": "bytes" },
+        { "internalType": "bytes", "name": "publicValues", "type": "bytes" }
+      ],
+      "name": "update",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "slot", "type": "uint256" }],
+      "name": "getSyncCommitteePeriod",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCurrentEpoch",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "bytes32", "name": "newVkey", "type": "bytes32" }],
+      "name": "updateHeliosProgramVkey",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "slot", "type": "uint256" },
+        { "indexed": true, "internalType": "bytes32", "name": "root", "type": "bytes32" }
+      ],
+      "name": "HeadUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        { "indexed": true, "internalType": "uint256", "name": "period", "type": "uint256" },
+        { "indexed": true, "internalType": "bytes32", "name": "root", "type": "bytes32" }
+      ],
+      "name": "SyncCommitteeUpdate",
+      "type": "event"
+    }
+  ]
