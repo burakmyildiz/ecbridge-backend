@@ -55,17 +55,29 @@ export class ProofGenerator {
       this.sp1HeliosOperatorProcess = null;
     }
     
+    // Skip SP1-Helios operator in production if Rust/Cargo is not available
+    if (process.env.SKIP_SP1_HELIOS === 'true') {
+      logger.info('SP1-Helios operator skipped (SKIP_SP1_HELIOS=true)');
+      return;
+    }
+    
     logger.info('Starting SP1-Helios operator...');
     const heliosEnv = require('dotenv').config({ path: `${this.sp1HeliosPath}/.env` }).parsed ?? {};
 
-    this.sp1HeliosOperatorProcess = spawn(
-      'cargo', 
-      ['run', '--release', '--bin', 'operator'],
-      { 
-        cwd: this.sp1HeliosPath,
-        env: { ...process.env, ...heliosEnv, RUST_LOG: process.env.RUST_LOG ?? 'info' },
-      }
-    );
+    try {
+      this.sp1HeliosOperatorProcess = spawn(
+        'cargo', 
+        ['run', '--release', '--bin', 'operator'],
+        { 
+          cwd: this.sp1HeliosPath,
+          env: { ...process.env, ...heliosEnv, RUST_LOG: process.env.RUST_LOG ?? 'info' },
+        }
+      );
+    } catch (error) {
+      logger.error(`Failed to start SP1-Helios operator: ${error}`);
+      logger.info('SP1-Helios operator will not run - Rust/Cargo not available in deployment environment');
+      return;
+    }
     
     this.sp1HeliosOperatorProcess.stdout?.on('data', (data) => {
       const output = data.toString();
@@ -81,6 +93,15 @@ export class ProofGenerator {
     
     this.sp1HeliosOperatorProcess.stderr?.on('data', (data) => {
       logger.info(`SP1-Helios operator: ${data.toString().trim()}`);
+    });
+    
+    this.sp1HeliosOperatorProcess.on('error', (error) => {
+      if (error.code === 'ENOENT') {
+        logger.error('Cargo not found - SP1-Helios operator requires Rust installation');
+        logger.info('SP1-Helios operator will not run in this environment');
+      } else {
+        logger.error(`SP1-Helios operator error: ${error}`);
+      }
     });
     
     this.sp1HeliosOperatorProcess.on('close', (code) => {
